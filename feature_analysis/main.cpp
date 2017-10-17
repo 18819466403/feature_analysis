@@ -11,7 +11,7 @@ typedef double type;
 
 
 const int sampleNumber = 408;//1593; //样本数量
-const int data_length = 10;//6;   //每个样本向量长度（特征数量）
+const int data_length = 18;//6;   //每个样本向量长度（特征数量）
 					  //const int k = 2 * data_length + 1; //隐藏层节点数目
 const int output = 1; //输出层节点数目
 
@@ -114,7 +114,6 @@ void generateFeature(int non_thyroid_number, int thyroid_number, int way) {
 		image.loadImage(0);
 		Matrix<int> matrix(image);
 		Feature feature(matrix);
-		
 		for (int i = 0; i < data_length; i++)
 			outstuf << feature[i] << ' ';
 		outstuf <<0<< '\n';
@@ -153,27 +152,7 @@ void generateSamples()
 		feature_means[i] = 0;
 		feature_standards[i] = 0;
 	}
-	//while (in >> har_mean >> har_var >> cv >> hist >> bdip >> nmsid >> kind) {
-	//	samples[number][0] = har_mean;
-	//	samples[number][1] = har_var;
-	//	samples[number][2] = cv;
-	//	samples[number][3] = hist;
-	//	//samples[number][4] = hist_mean;
-	//	//samples[number][5] = hist_variance;
-	//	//samples[number][6] = hist_skewness;
-	//	//samples[number][7] = hist_kurtosis;
-	//	samples[number][4] = bdip;
-	//	samples[number][5] = nmsid;
-	//	total[0] += har_mean;
-	//	total[1] += har_var;
-	//	total[2] += cv;
-	//	total[3] += hist;
-	//	total[4] += bdip;
-	//	total[5] += nmsid;
-	//	expectOutput[number][0] = kind;
-	//	number++;
 
-	//}
 	for (int i = 0; i < sampleNumber; i++) {
 		for (int j = 0; j < data_length; j++) {
 			in >> samples[i][j];
@@ -217,9 +196,18 @@ void save_feature() {
 }
 
 int main() {
-	//generateFeature(378, 30, OUT);
+	generateFeature(378, 30, OUT);
 	generateSamples();
 	save_feature();
-
+	//cv::String fileName = "K:\\trainImage\\block\\non_thyroid\\";
+	//fileName += to_string(1);
+	//fileName += ".bmp";
+	//Image image(fileName);
+	//image.loadImage(0);
+	//Matrix<int> matrix(image);
+	//Feature feature(matrix);
+	//for (int i = 0; i < data_length; i++)
+	//	cout << feature[i] << ' ';
+	//cout << 0 << '\n';
 
 }

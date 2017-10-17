@@ -3,24 +3,43 @@ c:\opencv3.1,0\opencv\build\include\opencv2\core\mat.hpp(1965): warning C4819: �
 c:\opencv3.1,0\opencv\build\include\opencv2\core\persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\opencv3.1,0\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\opencv3.1,0\opencv\build\include\opencv2\core\utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(145): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(147): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(154): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(156): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(162): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(164): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(170): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(172): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(231): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(238): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(245): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(252): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
 c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\imageprocess.h(153): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “cv”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “kind”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “hist_variance”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “hist_mean”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “hist_kurtosis”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “nmsid”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “bdip”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “hist_skewness”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “har_mean”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “hist”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(141): warning C4101: “har_var”: 未引用的局部变量
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(184): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(146): note: 编译类 模板 成员函数“Matrix<int> &Matrix<int>::getInverse(void)”时
-  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(115): note: 参见对正在编译的类 模板 实例化“Matrix<int>”的引用
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(205): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(109): warning C4715: “Feature::operator[]”: 不是所有的控件路径都返回值
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(144): warning C4715: “Matrix<int>::operator*”: 不是所有的控件路径都返回值
-c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(144): warning C4715: “Matrix<double>::operator*”: 不是所有的控件路径都返回值
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “cv”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “kind”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “hist_variance”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “hist_mean”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “hist_kurtosis”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “nmsid”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “bdip”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “hist_skewness”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “har_mean”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “hist”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\main.cpp(140): warning C4101: “har_var”: 未引用的局部变量
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(196): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(158): note: 编译类 模板 成员函数“Matrix<int> &Matrix<int>::getInverse(void)”时
+  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(116): note: 参见对正在编译的类 模板 实例化“Matrix<int>”的引用
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(217): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(194): warning C4244: “=”: 从“std::size_t”转换到“double”，可能丢失数据
+  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(158): note: 编译类 模板 成员函数“Matrix<std::size_t> &Matrix<std::size_t>::getInverse(void)”时
+  c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(134): note: 参见对正在编译的类 模板 实例化“Matrix<std::size_t>”的引用
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(196): warning C4244: “=”: 从“double”转换到“std::size_t”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(214): warning C4244: “初始化”: 从“std::size_t”转换到“double”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(217): warning C4244: “-=”: 从“double”转换到“std::size_t”，可能丢失数据
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\feature.h(110): warning C4715: “Feature::operator[]”: 不是所有的控件路径都返回值
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(156): warning C4715: “Matrix<int>::operator*”: 不是所有的控件路径都返回值
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(156): warning C4715: “Matrix<double>::operator*”: 不是所有的控件路径都返回值
+c:\users\navygold\documents\visual studio 2015\projects\feature_analysis\feature_analysis\matrix.h(156): warning C4715: “Matrix<unsigned __int64>::operator*”: 不是所有的控件路径都返回值
   feature_analysis.vcxproj -> C:\Users\NavyGold\documents\visual studio 2015\Projects\feature_analysis\x64\Debug\feature_analysis.exe
   feature_analysis.vcxproj -> C:\Users\NavyGold\documents\visual studio 2015\Projects\feature_analysis\x64\Debug\feature_analysis.pdb (Full PDB)

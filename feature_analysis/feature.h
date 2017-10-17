@@ -20,13 +20,13 @@ private:
 	double bdip;
 	double nmsid;
 
-	double glcm_entropy;
+	double glcm_energy;
 	double glcm_contrast;
 	double glcm_uniformity;
 	double glcm_idm;
 	double glcm_im;
 	double glcm_correlation;
-	double glcm_energy;
+	double glcm_entropy;
 	double glcm_brightness;
 
 	double tamura_coarseness;
@@ -42,7 +42,7 @@ protected:
 	void cal_hist();
 	void cal_bdip();
 	void cal_nmsid();
-	void cal_glcm();
+	void cal_glcm(int grade, int gap);
 public:
 	Feature(Matrix<int> &matrix);
 	Matrix<int> & getBlock();
@@ -90,13 +90,13 @@ public:
 		case 7:  return hist_kurtosis; break;
 		case 8:  return bdip; break;
 		case 9:  return nmsid; break;
-		case 10:  return glcm_entropy; break;
+		case 10:  return glcm_energy; break;
 		case 11:  return glcm_contrast; break;
 		case 12:  return glcm_uniformity; break;
 		case 13:  return glcm_idm; break;
 		case 14:  return glcm_im; break;
 		case 15:  return glcm_correlation; break;
-		case 16:  return glcm_energy; break;
+		case 16:  return glcm_entropy; break;
 		case 17:  return glcm_brightness; break;
 		case 18:  return tamura_coarseness; break;
 		case 19:  return tamura_contrast; break;
@@ -123,14 +123,158 @@ Feature::Feature(Matrix<int> &matrix) {
 	cal_hist();
 	cal_bdip();
 	cal_nmsid();
+	cal_glcm(16,1);
 }
 
 Matrix<int> & Feature::getBlock() {
 	return *block;
 }
 
-void Feature::cal_glcm() {
+void Feature::cal_glcm(int grade, int gap) {
+	Matrix<size_t> mat_0(grade, grade);
+	Matrix<size_t> mat_45(grade, grade);
+	Matrix<size_t> mat_135(grade, grade);
+	Matrix<size_t> mat_90(grade, grade);//GLCM of four directions of 0, 45, 90, 135 degree. 
+	Matrix<double> mat(grade, grade);
+	size_t grade_factor = 256 / grade;
+	size_t row = block->getRow();
+	size_t cloumn = block->getColumn();
+	for (int i = 0; i < block->getRow(); i++)
+	{
+		for (int j = 0; j < block->getColumn()-gap; j++) {
+			mat_0[block->getElement(i, j) / grade_factor][block->getElement(i, j + gap) / grade_factor]++;
+			if(block->getElement(i, j) / grade_factor!= block->getElement(i, j + gap) / grade_factor)
+			mat_0[block->getElement(i, j+gap) / grade_factor][block->getElement(i, j ) / grade_factor]++;
+		}
+	}
 
+	for (int j = 0; j < block->getColumn(); j++)
+		for (int i = 0; i < block->getRow() - gap; i++)
+		{
+			mat_90[block->getElement(i+gap, j) / grade_factor][block->getElement(i, j) / grade_factor]++;
+			if (block->getElement(i+gap, j) / grade_factor != block->getElement(i, j) / grade_factor)
+			mat_90[block->getElement(i, j) / grade_factor][block->getElement(i+gap, j) / grade_factor]++;
+		}
+
+	for (int i = 0; i < block->getRow() - gap; i++)
+	{
+		for (int j = 0; j < block->getColumn() - gap; j++) {
+			mat_45[block->getElement(i, j) / grade_factor][block->getElement(i+gap, j+gap) / grade_factor]++;
+			if (block->getElement(i + gap, j+gap) / grade_factor != block->getElement(i, j) / grade_factor)
+				mat_45[block->getElement(i+gap, j+gap) / grade_factor][block->getElement(i, j) / grade_factor]++;
+		}
+	}
+
+	for (int i = 0; i < block->getRow() - gap; i++){
+		for (int j = block->getColumn()-1; j >= gap; j--) {
+			mat_135[block->getElement(i, j) / grade_factor][block->getElement(i + 1, j - 1) / grade_factor]++;
+			if(block->getElement(i, j) / grade_factor!= block->getElement(i + 1, j - 1) / grade_factor)
+				mat_135[block->getElement(i+1, j-1) / grade_factor][block->getElement(i, j) / grade_factor]++;
+		}
+	}
+    
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			mat[i][j] = (mat_0[i][j] + mat_45[i][j] + mat_90[i][j] + mat_135[i][j])*1.0 / 4;
+		}
+	}
+
+	// calcute energy
+	glcm_energy = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_energy += mat[i][j] * mat[i][j];
+		}
+	}
+
+	//calcute contrast
+	glcm_contrast = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_contrast += (i - j)*(i - j)*mat[i][j];
+		}
+	}
+
+	//calcute uniformity
+	glcm_uniformity = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_uniformity += mat[i][j]*1.0 / (1 + abs(i - j));
+		}
+	}
+
+	//calcute inverse difference moment
+	glcm_idm = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_idm += mat[i][j]*1.0 / (1 + (i - j)*(i - j));
+		}
+	}
+
+	//calcute inertia moment
+	glcm_im = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_im += (i - j)*(i - j)*mat[i][j];
+       }
+	}
+
+	//calcute correlation
+	glcm_correlation = 0;
+	int miu_x = 0;
+	int miu_y = 0;
+	int sei_ta_x = 0;
+	int sei_ta_y = 0;
+	for (int i = 0; i < grade; i++) {
+		int tmp_x = 0;
+		for (int j = 0; j < grade; j++) {
+			tmp_x += mat[i][j];
+		}
+		miu_x += i*tmp_x;
+	}
+	for (int j = 0; j < grade; j++) {
+		int tmp_y = 0;
+		for (int i = 0; i < grade; i++) {
+			tmp_y += mat[i][j];
+		}
+		miu_x += j*tmp_y;
+	}
+	for (int i = 0; i < grade; i++) {
+		int tmp = 0;
+		for (int j = 0; j < grade; j++) {
+			tmp += mat[i][j];
+		}
+		sei_ta_x += (i - miu_x)*(i - miu_x)*tmp;
+	}
+	for (int j = 0; j < grade; j++) {
+		int tmp = 0;
+		for (int i = 0; i < grade; i++) {
+			tmp += mat[i][j];
+		}
+		sei_ta_y += (j - miu_y)*(j - miu_y)*tmp;
+	}
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			if(sei_ta_x != 0 && sei_ta_y != 0)
+			glcm_correlation += (i - miu_x)*(j - miu_y)*mat[i][j] * 1.0 / sei_ta_x / sei_ta_y;
+		}
+	}
+	//calcute entropy
+	glcm_entropy = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			if(0 != mat[i][j])
+			glcm_entropy -= mat[i][j] * log10(mat[i][j]);
+		}
+	}
+
+	//calcute brightness
+	glcm_brightness = 0;
+	for (int i = 0; i < grade; i++) {
+		for (int j = 0; j < grade; j++) {
+			glcm_brightness += (i + j - miu_x - miu_y)*(i + j - miu_x - miu_y)*(i + j - miu_x - miu_y)*mat[i][j];
+		}
+	}
 }
 
 void Feature::cal_har_mean_var() {

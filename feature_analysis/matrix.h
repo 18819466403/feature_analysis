@@ -22,7 +22,7 @@ public:
 	virtual Matrix<T>& operator*(Matrix<T>& m);
 	virtual T* operator[](int i);
 	virtual Matrix<T>& operator=(Matrix<T>& right);
-	
+	virtual void  show();
 	virtual double getDistance(Matrix<T>&back, int frontRow,int backRow); 
 	virtual double getAbsolute(int row);
 };
@@ -38,6 +38,18 @@ template<typename T> Matrix<T>::Matrix(int row_number, int column_number) {
 	array = new T*[row];
 	for (int i = 0; i < row; i++) {
 		array[i] = new T[column];
+	}
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < column; j++)
+			array[i][j] = (T)(0);
+}
+
+template<typename T> void Matrix<T>::show() {
+	for (int i = 0; i < row; i++) {
+		for (int j = 0; j < column; j++) {
+			std::cout << array[i][j] << ' ';
+		}
+		std::cout << '\n';
 	}
 }
 
