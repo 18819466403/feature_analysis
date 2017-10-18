@@ -1,6 +1,7 @@
 #pragma once
 #include"matrix.h"
 #include"iostream"
+#include<vector>
 using namespace std;
 class Feature{
 private:
@@ -43,6 +44,7 @@ protected:
 	void cal_bdip();
 	void cal_nmsid();
 	void cal_glcm(int grade, int gap);
+	void cal_tamura();
 public:
 	Feature(Matrix<int> &matrix);
 	Matrix<int> & getBlock();
@@ -128,6 +130,17 @@ Feature::Feature(Matrix<int> &matrix) {
 
 Matrix<int> & Feature::getBlock() {
 	return *block;
+}
+
+void Feature::cal_tamura() {
+	vector<Matrix<double>> A(5);
+	
+	for (int i = 0; i < 5; i++)
+	{
+		A[i].init(block->getRow(), block->getColumn());
+
+	}
+
 }
 
 void Feature::cal_glcm(int grade, int gap) {

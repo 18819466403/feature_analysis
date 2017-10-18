@@ -9,12 +9,13 @@ protected:
 	int column;
 public:
 	Matrix(int row_number, int column_number);
-	Matrix(Image &image);
+	Matrix(Image &image);	
 	virtual ~Matrix();
 	virtual int getRow();
 	virtual int getColumn();
 	virtual T** getArray();
 	virtual void setArray(T** matrix);
+	virtual void init(int row_number, int column_number);
 	virtual void put(int row_index, int column_index, const T &value);
 	virtual const T& getElement(int row_index, int column_index);
 	virtual Matrix<T>& getTranspose();
@@ -26,6 +27,7 @@ public:
 	virtual double getDistance(Matrix<T>&back, int frontRow,int backRow); 
 	virtual double getAbsolute(int row);
 };
+
 template<typename T> Matrix<T>::Matrix(int row_number, int column_number) {
 	if (row_number > 0 && column_number > 0) {
 		row = row_number;
@@ -43,6 +45,8 @@ template<typename T> Matrix<T>::Matrix(int row_number, int column_number) {
 		for (int j = 0; j < column; j++)
 			array[i][j] = (T)(0);
 }
+
+
 
 template<typename T> void Matrix<T>::show() {
 	for (int i = 0; i < row; i++) {
@@ -68,7 +72,23 @@ template<typename T> Matrix<T>::Matrix(Image &image) {
 template<typename T> Matrix<T>::~Matrix() {
 	delete array;
 }
-
+template<typename T> void Matrix<T>::init(int row_number, int column_number) {
+	if (row_number > 0 && column_number > 0) {
+		row = row_number;
+		column = column_number;
+	}
+	else {
+		row = 1;
+		column = 1;
+	}
+	array = new T*[row];
+	for (int i = 0; i < row; i++) {
+		array[i] = new T[column];
+	}
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < column; j++)
+			array[i][j] = (T)(0);
+}
 template<typename T> int Matrix<T>::getRow() {
 	return row;
 }
